@@ -1,5 +1,6 @@
 import React, {useState, useEffect } from 'react'
-import axios from 'axios'
+import {Helpers} from "./helpers"
+import ArticleCard from "./ArticleCard"
 
 const FrontPage = () => {
 
@@ -11,20 +12,33 @@ useEffect(()=> {
 
 async function getData() {
     try{
-    let res = await axios.get('/dogs');
-    console.log(res.data)
+    let res = await Helpers.getArticles();
+    console.log(res)
     
-    setData(res.data)
+    setData(res.data[0])
+console.log(data)
 } catch (err) {
     console.log(err)
 }
 }
-
+getData()
 return (
-    data 
+<>
+{data}
+ <h3>This is Working</h3>
+    {[...data].map(c => (
+        <ArticleCard
+        source = {c.source}
+        author = {c.author}
+        title = {c.title}
+        description = {c.description}
+        url = {c.url}
+        content = {c.content}
+        />))}
+    
 
 
-
+</>
     )
 
 

@@ -5,7 +5,7 @@ import {Helpers} from "./helpers"
 
 
 
-const Login = () => {
+const SignUp = () => {
 
     const [formData, setFormData] = useState("")
 
@@ -14,15 +14,15 @@ const Login = () => {
         setFormData(formData => ({...formData,[name]: value }))
     }
     console.log(formData.username)
-    async function LoginUser(e) {
+    async function SignUpUser(e) {
         e.preventDefault();
-        const res = await Helpers.loginUser(formData.username, formData.password)
+        const res = await Helpers.signUpUser(formData.username, formData.password, formData.email)
         console.log(res)
     }
     
     return (
         <>
-        <h1>Please Login</h1>
+        <h1>Please SignUp</h1>
         <form>
             <div className= "log-in-form">
             <input id= "username" type= "text" name='username'placeholder= "username"
@@ -31,8 +31,9 @@ const Login = () => {
             <div className= "log-in-form">
             <input id= "password" type= "text" name= 'password' onChange={handleChange} placeholder= "password" value={formData.password}></input>
             </div>
+    
             <div className= 'log-in-form'>
-            <button onClick={LoginUser}>Log In</button>
+            <button onClick={SignUpUser}>SignUp</button>
             </div>
         </form>
         </>
@@ -40,4 +41,4 @@ const Login = () => {
 }
 
 
-export default Login
+export default SignUp
