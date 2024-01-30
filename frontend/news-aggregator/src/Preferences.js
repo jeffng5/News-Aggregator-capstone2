@@ -7,6 +7,7 @@ const Preferences = () => {
         <>
         <h1>News Topic Preferences</h1> 
         <form>
+        
         <div>
         <input type = 'checkbox' id ='Africa' name='Africa' value= 'Africa'></input>   
         <label for= "Africa">Africa</label>
@@ -54,7 +55,7 @@ const Preferences = () => {
         <div>
             <h2>OR</h2>
         <input type = 'text' id ='Anything' name='Anything' value= 'Anything' placeholder='Anything'></input>   
-        <label for= "Anything"> most popular articles by search term/phrase </label> 
+        <label for= "Anything"> most popular articles by search term / phrase </label> 
         </div>
         <div className='preferences'>
         <button>Submit Preferences</button>

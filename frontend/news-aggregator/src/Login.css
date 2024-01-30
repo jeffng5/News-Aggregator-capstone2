@@ -9,6 +9,7 @@ button {
     background-color: teal;
     color: white;
     padding: 5px;
+    font-weight: 550;
 }
 
 div.log-in-form {
