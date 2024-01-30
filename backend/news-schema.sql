@@ -9,6 +9,8 @@ CREATE TABLE archives (
     id INTEGER,
     user_id INTEGER REFERENCES users ON DELETE CASCADE,
     url_ TEXT NOT NULL,
-    PRIMARY KEY (user_id)
+    PRIMARY KEY (user_id),
+    title TEXT NOT NULL,
+    description TEXT
 
 );

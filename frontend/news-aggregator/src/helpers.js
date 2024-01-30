@@ -42,8 +42,7 @@ export class Helpers {
 // call to retrieve articles
     static async getArticles() {
         let res = await this.request(`users/preferences`)
-        console.log(res)
-        return res['url'];
+        return res
     }
 
 }

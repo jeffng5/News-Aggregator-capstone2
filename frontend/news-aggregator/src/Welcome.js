@@ -6,18 +6,18 @@ import SignUp from "./SignUp"
 const Welcome = () => {
 
     return (
-        <>
-        <h1>Welcome to <p className= 'news-title'><b>YourFrontPageNews.com</b></p></h1>
+        <body>
+        <h1>Welcome to <p className= 'news-title'><b className = 'title'>YourFrontPageNews.com</b></p></h1>
 
         <h2><div><b></b></div>
-        <div>presents
-            to you curated articles of your news preferences</div> <div>from the <b>top news publications</b></div></h2>
+        <div>
+            your curated articles of your news preferences</div> <div>from the <b>top news publications</b></div></h2>
     
    
     <Login />
         <h1>Or</h1>
     <SignUp />
-    </>)
+    </body>)
 }
 
 export default Welcome

@@ -27,11 +27,6 @@ app.use("/users", usersRoutes);
 //   });
 
 
-
-app.get('/dogs', function(req, res) {
-  return res.json('Dogs go bark bark!');
-});
-
 app.post('/register', async (req,res, next)=> {
     try {
         const { username, password } = req.body;

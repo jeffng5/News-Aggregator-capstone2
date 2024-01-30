@@ -24,3 +24,8 @@ div {
 div.preferences{
     padding: 15px;
 }
+
+.newspaper {
+    background:url("../photos/Newsbackground2.jpeg");
+    opacity: .25;
+}

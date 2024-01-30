@@ -1,5 +1,6 @@
 import React, {useState, useEffect } from 'react'
 import {Helpers} from "./helpers"
+import "./Login.css"
 import ArticleCard from "./ArticleCard"
 
 const FrontPage = () => {
@@ -11,21 +12,22 @@ useEffect(()=> {
 }, []);
 
 async function getData() {
-    try{
+
     let res = await Helpers.getArticles();
     console.log(res)
     
-    setData(res.data[0])
+    setData(res)
+console.log(res.data[0])}
+// } catch (err) {
+//     console.log(err)
+// }
+
+
 console.log(data)
-} catch (err) {
-    console.log(err)
-}
-}
-getData()
 return (
-<>
+<body className='newspaper'>
 {data}
- <h3>This is Working</h3>
+ <h3 id='font'>This is Working</h3>
     {[...data].map(c => (
         <ArticleCard
         source = {c.source}
@@ -36,12 +38,10 @@ return (
         content = {c.content}
         />))}
     
+<h4 id='font'>THIS IS STILL WORKING</h4>
 
-
-</>
-    )
-
-
-}
+</body>
+)
+    }
 
 export default FrontPage
