@@ -26,20 +26,27 @@ app.use("/users", usersRoutes);
 //     });
 //   });
 
+const pgp = require('pg-promise')(/* options */)
+const db = pgp("postgresql://jeffreyng:beachbodyp90x@127.0.0.1:5433/news")
 
 app.post('/register', async (req,res, next)=> {
     try {
-        const { username, password } = req.body;
+        const { username, password, email } = req.body;
         console.log(req.body)
         if (!username || !password) {
-            throw new ExpressError("Username and password required.")
+            throw new ExpressError("Username and password required.")}
         const hashedPwd = await bcrypt.hash(password, BCRYPT_WORK_FACTOR);
+   
         const result = await db.query(`
-        INSERT INTO users (username, password)
-        VALUES ($1, $2)
-        RETURNING username`, [username, hashedPwd])
-        return res.json(result.rows[0], 'Logged in!')
-        }
+        INSERT INTO users (username, password, email)
+        VALUES ($1, $2, $3)
+        RETURNING username`, [username, hashedPwd, email]);
+
+        const register = result
+        if (register){
+        await bcrypt.compare(password, hashedPwd) 
+            return res.json("Logged in!")
+          }
     }catch (e) {
         if (e.code === '23505') {
             return next(new ExpressError("Username taken. Please pick another!"))
@@ -48,18 +55,24 @@ app.post('/register', async (req,res, next)=> {
     }
 })
 
-app.post('/login', async (req, res, next) => {
+app.get('/login', async (req, res, next) => {
+
     try {
-        const {username, password} = req.body;
+        const {username, password} = req.query;
+        console.log(req.query)
         if (!username || !password) {
             throw new ExpressError("Username and password required.")
         }
+
         const results = await db.query(
         `SELECT username, password FROM users
         WHERE username = $1`, [username]);
-        const user = results.rows[0];
+
+        const user = results[0].username;
+        const pwd = results[0].password;
+      
         if (user) {
-              if (await bcrypt.compare(password, user.password)) {
+              if (await bcrypt.compare(password, pwd)) {
                 return res.json("Logged in!")
               }
         }

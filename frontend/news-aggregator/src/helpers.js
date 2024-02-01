@@ -27,14 +27,14 @@ export class Helpers {
 
 // user login helper function
     static async loginUser(username, password) {
-        let res = await this.request(`login`, {username, password}, 'post')
+        let res = await this.request(`login`, {username, password})
         console.log(res)
         return res;
 
     }
 // user SignUp helper function
-    static async signUpUser(username, password) {
-        let res = await this.request(`register`, {username, password}, 'post')
+    static async signUpUser(username, password, email) {
+        let res = await this.request(`register`, {username, password, email}, 'post')
         console.log(res)
         return res;
 

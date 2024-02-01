@@ -4,10 +4,12 @@ const { Client } = require("pg");
 const { getDatabaseUri } = require("./config");
 
 let db;
+let entry = "postgresql://jeffreyng:beachbodyp90x@127.0.0.1:5433/news"
 
 if (process.env.NODE_ENV === "production") {
   db = new Client({
     connectionString: getDatabaseUri(),
+  
     ssl: {
       rejectUnauthorized: false
     }

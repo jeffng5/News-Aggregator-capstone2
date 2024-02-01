@@ -1,23 +1,26 @@
 import React, {useState} from 'react'
 // import './Login.css'
 import {Helpers} from "./helpers"
-
+import { useNavigate } from 'react-router-dom'
 
 
 
 const Login = () => {
 
-    const [formData, setFormData] = useState("")
+    const navigate = useNavigate()
+    const [formData, setFormData] = useState([])
 
     const handleChange = (e) => {
         const { name, value } = e.target
         setFormData(formData => ({...formData,[name]: value }))
     }
     console.log(formData.username)
+    console.log(formData.password)
     async function LoginUser(e) {
         e.preventDefault();
-        const res = await Helpers.loginUser(formData.username, formData.password)
+        const res = await Helpers.loginUser(formData.username, formData.password);
         console.log(res)
+        navigate('/users')
     }
     
     return (
