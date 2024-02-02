@@ -7,7 +7,7 @@ const Welcome = () => {
 
     return (
         <body>
-        <h1>Welcome to <p className= 'news-title'><b className = 'title'>YourFrontPageNews.com</b></p></h1>
+        <h1 className='welcome'>Welcome to <p className= 'news-title'><b className = 'title'>YourFrontPageNews.com</b></p></h1>
 
         <h2><div><b></b></div>
         <div>
@@ -15,7 +15,7 @@ const Welcome = () => {
     
    
     <Login />
-        <h1>Or</h1>
+        <h1 className='or'>Or</h1>
     <SignUp />
     </body>)
 }

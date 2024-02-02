@@ -21,3 +21,7 @@ p.news-title {
 body {
   background-color: lightgrey;
 }
+
+h1.or {
+  font-size: 40px;
+}

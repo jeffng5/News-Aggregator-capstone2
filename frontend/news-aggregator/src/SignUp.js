@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-// import './Login.css'
+import './Login.css'
 import {Helpers} from "./helpers"
 import { useNavigate } from 'react-router-dom'
 
@@ -27,7 +27,7 @@ const SignUp = () => {
     
     return (
         <>
-        <h1>Please SignUp</h1>
+        <h1 id='login-welcome'>Please SignUp</h1>
         <form>
             <div className= "log-in-form">
             <input id= "username" type= "text" name='username'placeholder= "username"
