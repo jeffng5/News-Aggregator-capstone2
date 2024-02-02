@@ -1,32 +1,29 @@
 import React from 'react'
 import "./FrontPage.css"
 import Archive from "./Archive"
+import ColoredLineThin from "./ColoredLineThin"
 
-const ArticleCard = ({title, description, url, author, urlImage}) => {
-    
+const ArticleCard = ({title, description, url, author, urlToImage}) => {
+
 
 if (description)
+
     return (
+
     <div>
+        
+
+    <p><img className = 'photograph' src={urlToImage} alt = 'news'/></p>
+    <span><h2><a href={url}>{title}</a></h2><h3 className='desc'>{description}</h3></span>
+    <h4> by: {author}</h4>
     <Archive />
-    <img src={urlImage} alt = 'news'/>
-    <h4><a href={url}>{title}</a></h4>
-    by: <h4>{author}</h4>
-    Desc: <h4>{description}</h4>
+    <ColoredLineThin color = "gray" />  
     </div>
+    
 )
-else {
-    return (
-        <div>
-        <Archive />       
-        {/* <img src={urlImage}/>
-        <h4><a href={url}>{title}</a></h4>
-        by: <h4>{author}</h4> */}
-        </div>
-    )
 
 }
-    }
+    
 
 
 export default ArticleCard;

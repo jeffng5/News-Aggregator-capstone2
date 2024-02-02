@@ -7,9 +7,36 @@ h1 {
 }
 
 img {
-    width: 50px;
-    height: 100px;
+    margin-left: 10px;
+    width: 25px;
+    height: 25px;
 }
 #date-location { display: inline-block; position: absolute; left: 15px; top: 125px; text-align: left; background-color: #FFFFFF; border: 1px solid #006699; padding: 4px; z-index: 2; }
 
 .date-font { color: #006699; font: 13px arial, sans-serif; font-weight: bold; }
+
+div.archive {
+position: relative;
+right: 200px;
+
+}
+
+img.photograph{
+border-radius: 6px;
+height: 300px;
+width: 440px;
+
+}
+
+h2 {
+  font-size:30px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+h3.desc {
+    color: green;
+}

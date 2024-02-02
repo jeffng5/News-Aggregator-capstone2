@@ -30,3 +30,15 @@ div.preferences{
     background:url("../photos/Newsbackground2.jpeg");
     opacity: .25;
 }
+
+h3.color {
+    color : green;
+}
+
+div.button {
+    padding-top: 10px;
+}
+
+#noneall a {
+    text-decoration: none;
+}
