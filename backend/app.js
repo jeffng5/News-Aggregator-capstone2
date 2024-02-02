@@ -44,8 +44,9 @@ app.post('/register', async (req,res, next)=> {
 
         const register = result
         if (register){
-        await bcrypt.compare(password, hashedPwd) 
-            return res.json("Logged in!")
+        await bcrypt.compare(password, hashedPwd)  
+        return res.json("Logged in!")
+   
           }
     }catch (e) {
         if (e.code === '23505') {

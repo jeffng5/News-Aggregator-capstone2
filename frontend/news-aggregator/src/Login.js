@@ -15,11 +15,11 @@ const Login = () => {
         setFormData(formData => ({...formData,[name]: value }))
     }
     console.log(formData.username)
-    console.log(formData.password)
     async function LoginUser(e) {
         e.preventDefault();
         const res = await Helpers.loginUser(formData.username, formData.password);
         console.log(res)
+
         navigate('/users')
     }
     

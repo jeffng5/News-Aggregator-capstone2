@@ -8,11 +8,16 @@ const getData = async() =>{
 try {
  const res = await axios.get("https://newsapi.org/v2/top-headlines?country=us&category=general&q=apple&apiKey=9e27e511f89b442e8a6dafcc72fb6e3c"
 )
+console.log(res)
+console.log('freedom')
 let url = res['data']['articles'][0]['url']
 let title = res['data']['articles'][0]['title']
 let description = res['data']['articles'][0]['description']
 console.log(res['data']['articles'])
-return res['data']['articles']
+console.log(url)
+console.log(title)
+console.log(description)
+return url
 
 }
 catch (err) {

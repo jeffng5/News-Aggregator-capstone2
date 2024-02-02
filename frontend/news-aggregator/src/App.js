@@ -1,12 +1,13 @@
 import React from 'react'
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import SignUp from "./SignUp"
 import Welcome from "./Welcome"
-import Login from "./Login"
 import Preferences from "./Preferences"
 import FrontPage from "./FrontPage"
 
+
+let username = localStorage.getItem('username')
+console.log(username)
 function App() {
 
   return (

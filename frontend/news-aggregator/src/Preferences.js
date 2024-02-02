@@ -1,8 +1,11 @@
 import React from 'react'
 import "./Login.css"
 
+let username = localStorage.getItem('username')
 const Preferences = () => {
 
+if (username)
+console.log(username)
     return (
         <>
         <h1>News Topic Preferences</h1> 
@@ -54,7 +57,7 @@ const Preferences = () => {
         </div>
         <div>
             <h2>OR</h2>
-        <input type = 'text' id ='Anything' name='Anything' value= 'Anything' placeholder='Anything'></input>   
+        <input type = 'text' id ='Anything' name='Anything' value ="Anything" placeholder='Anything'></input>   
         <label for= "Anything"> most popular articles by search term / phrase </label> 
         </div>
         <div className='preferences'>

@@ -20,8 +20,9 @@ const SignUp = () => {
         e.preventDefault();
         const res = await Helpers.signUpUser(formData.username, formData.password, formData.email)
         console.log(res)
-        navigate('/users')
 
+        navigate('/users')
+    
     }
     
     return (

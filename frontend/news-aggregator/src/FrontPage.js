@@ -1,47 +1,57 @@
-import React, {useState, useEffect } from 'react'
-import {Helpers} from "./helpers"
-import "./Login.css"
+import React, {useState, useEffect} from 'react'
+import "./FrontPage.css"
+import axios from 'axios'
 import ArticleCard from "./ArticleCard"
+import ColoredLine from "./ColoredLine"
+import ColoredLineThin from "./ColoredLineThin"
+import Archive from "./Archive"
 
 const FrontPage = () => {
 
-const [data, setData] = useState("")
-    
-useEffect(()=> {
-    getData();
-}, []);
+    const [dateTime, setDateTime] = useState(new Date())
+    const [allData, setAllData] = useState([])
+    const date = dateTime.toLocaleDateString();
 
-async function getData() {
+useEffect (()=> {
+    setDateTime(new Date())
+}, [])
 
-    let res = await Helpers.getArticles();
+const getData = async() => {
+try { 
+    const res = await axios.get("https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=9e27e511f89b442e8a6dafcc72fb6e3c")
     console.log(res)
     
-    setData(res)
-console.log(res.data[0])}
-// } catch (err) {
-//     console.log(err)
-// }
+    let url = res['data']['articles'][0]['url']
+  
+    setAllData(res['data']['articles'])
+
+    return res}
+ catch (err) {
+     console.log(err)
+ }
+}
+getData()
 
 
-console.log(data)
 return (
-<body className='newspaper'>
-{data}
- <h3 id='font'>This is Working</h3>
-    {[...data].map(c => (
-        <ArticleCard
-        source = {c.source}
-        author = {c.author}
-        title = {c.title}
-        description = {c.description}
-        url = {c.url}
-        content = {c.content}
-        />))}
-    
-<h4 id='font'>THIS IS STILL WORKING</h4>
+    <body className='demo'>
+<h1>Your Front Page News </h1>
+<h2>{date}</h2>
+
+<ColoredLine color = "black" />
+{allData.map(c => (
+    <ArticleCard  title = {c.title} 
+    url = {c.url}
+    description ={c.description}
+   urlImage= {c.urlImage}
+    author = {c.author} />))}
+<Archive />
+<ColoredLineThin color = "gray" />  
+
 
 </body>
 )
-    }
+        }
+    
 
 export default FrontPage

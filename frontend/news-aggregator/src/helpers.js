@@ -29,6 +29,9 @@ export class Helpers {
     static async loginUser(username, password) {
         let res = await this.request(`login`, {username, password})
         console.log(res)
+        if (res) {
+            localStorage.setItem('username', username)
+        }
         return res;
 
     }
@@ -36,13 +39,20 @@ export class Helpers {
     static async signUpUser(username, password, email) {
         let res = await this.request(`register`, {username, password, email}, 'post')
         console.log(res)
+        if (res) {
+            localStorage.setItem('username',username)
+        }
+            
         return res;
 
     }
 // call to retrieve articles
-    static async getArticles() {
-        let res = await this.request(`users/preferences`)
-        return res
-    }
+    // static async getArticles() {
+    //     // console.log('printout')
+    //     let res = await this.request(`users/preferences`)
+    //     console.log('test1')
+
+    //     return res
+    // }
 
 }
