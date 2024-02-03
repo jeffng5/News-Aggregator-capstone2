@@ -131,8 +131,8 @@ console.log(username)
         <input type = 'text' id ='Anything' name='Anything' placeholder='Anything' onChange={handleForm}></input>   
         <label for= "Anything"> most popular articles by search term / phrase </label> 
         
-        <div className="preferences">
-       <Link to = 'preferences'><button id='preferences'>See Front Page News</button></Link>
+        <div className="button">
+       <Link to = 'preferences'><button className='save'>See Front Page News</button></Link>
        
         </div>
         </form>
