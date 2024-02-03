@@ -12,8 +12,7 @@ const Welcome = () => {
         <h2><div><b></b></div>
         <div>
             your curated articles of your news preferences</div> <div>from the <b>top news publications</b></div></h2>
-    
-   
+            
     <Login />
         <h1 className='or'>Or</h1>
     <SignUp />

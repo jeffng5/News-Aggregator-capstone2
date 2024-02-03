@@ -125,14 +125,14 @@ console.log(username)
         <label for= "US">U.S.</label>
         </div>
         <div className='button'>
-        <button onClick={handleChange}>Save Preferences</button> 
+        <button className="save" onClick={handleChange}>Save Preferences</button> 
         </div>
             <h2>OR</h2>
         <input type = 'text' id ='Anything' name='Anything' placeholder='Anything' onChange={handleForm}></input>   
         <label for= "Anything"> most popular articles by search term / phrase </label> 
         
-        <div className='preferences'>
-       <Link to = 'preferences'><button>See Front Page News</button></Link>
+        <div className="preferences">
+       <Link to = 'preferences'><button id='preferences'>See Front Page News</button></Link>
        
         </div>
         </form>

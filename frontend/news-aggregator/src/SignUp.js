@@ -42,7 +42,7 @@ const SignUp = () => {
 
     
             <div className= 'log-in-form'>
-            <button onClick={SignUpUser}>SignUp</button>
+            <button className='log' onClick={SignUpUser}>SignUp</button>
             </div>
         </form>
         </>

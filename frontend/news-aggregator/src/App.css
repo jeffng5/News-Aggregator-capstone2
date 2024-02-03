@@ -19,9 +19,19 @@ p.news-title {
 }
 
 body {
-  background-color: lightgrey;
+  background-color: whitesmoke;
 }
 
 h1.or {
-  font-size: 40px;
+  margin-top: 25px;
+  font-size: 45px;
+}
+
+p.news-title {
+  margin-bottom: 5px;
+}
+
+.welcome {
+  margin-top : 5px;
+  margin-bottom: 5px;
 }

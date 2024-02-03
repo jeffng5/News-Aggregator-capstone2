@@ -10,7 +10,37 @@ button {
     color: white;
     padding: 5px;
     font-weight: 550;
+    height: 40px;
+    width: 100px; 
+    position: relative;
+    margin-left: 100%;
 }
+
+button.log{
+    position: relative;
+    right: 990px;
+    text-align: center;
+    height: 30px;
+    width: 90px;
+}
+
+button.save{
+    position: relative;
+    right: 1015px;
+    text-align: center;
+    height: 29px;
+    width: 150px;
+    
+}
+
+button#preferences{
+    position:relative;
+    text-align: center;
+    height: 35px;
+    width: 150px;
+    
+}
+
 
 div.log-in-form {
     padding: 5px;

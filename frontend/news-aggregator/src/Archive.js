@@ -7,7 +7,7 @@ const Archive = () =>{
 return (
 
     <>
-    <button><img src = {myImage}></img>Archive</button>
+    <button className='archive'><img src = {myImage}></img>Archive</button>
  
     </>
 )

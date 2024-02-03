@@ -9,17 +9,17 @@ const ArticleCard = ({title, description, url, author, urlToImage}) => {
 if (description)
 
     return (
-
-    <div>
-        
-
+    <>
+    <p>
+    <div className='article'>
     <p><img className = 'photograph' src={urlToImage} alt = 'news'/></p>
-    <span><h2><a href={url}>{title}</a></h2><h3 className='desc'>{description}</h3></span>
-    <h4> by: {author}</h4>
+    <h2 className='headline'><span><a href={url} target="_blank">{title}<h5>{description}</h5></a></span></h2>
     <Archive />
-    <ColoredLineThin color = "gray" />  
+    <div className='author'><h4> by: {author} </h4></div>
     </div>
-    
+    </p>
+    <ColoredLineThin color = "gray" />  
+    </>
 )
 
 }
