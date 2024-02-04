@@ -6,11 +6,17 @@ CREATE TABLE users (
     CHECK (position('@' IN email) > 1));
 
 CREATE TABLE archives (
-    id INTEGER,
-    user_id INTEGER REFERENCES users ON DELETE CASCADE,
-    url_ TEXT NOT NULL,
-    PRIMARY KEY (user_id),
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    url TEXT NOT NULL,
     title TEXT NOT NULL,
-    description TEXT
+    description TEXT,
+    author TEXT
 
 );
+
+CREATE TABLE preferences (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    preferences TEXT NOT NULL
+)

@@ -46,13 +46,19 @@ export class Helpers {
         return res;
 
     }
-// call to retrieve articles
-    // static async getArticles() {
-    //     // console.log('printout')
-    //     let res = await this.request(`users/preferences`)
-    //     console.log('test1')
+// call to archive articles
+    static async saveArticle(username, url, title, description, author) {
+        let res = await this.request(`users/preferences`, {username, url, title, description, author}, 'post')
+        console.log(res)
+        return res;
+    }
 
-    //     return res
-    // }
+//call to get archived articles
+    static async getArticles(username) {
+        let res = await this.request('users/archive', {username})
+        console.log(res)
+        return res;
+    }    
+ 
 
 }

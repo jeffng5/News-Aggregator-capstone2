@@ -1,38 +1,65 @@
 const express = require('express');
 const router = express.Router();
-const axios = require('axios')
+const axios = require('axios');
+const db = require("../db");
 
-router.get("/preferences", async function (req, res, next) {
+let username = 'BabyBear'
 
-const getData = async() =>{
-try {
- const res = await axios.get("https://newsapi.org/v2/top-headlines?country=us&category=general&q=apple&apiKey=9e27e511f89b442e8a6dafcc72fb6e3c"
-)
-console.log(res)
-console.log('freedom')
-let url = res['data']['articles'][0]['url']
-let title = res['data']['articles'][0]['title']
-let description = res['data']['articles'][0]['description']
-console.log(res['data']['articles'])
-console.log(url)
-console.log(title)
-console.log(description)
-return url
+router.post("/preferences", async function (req, res, next) {
+    
+    try {
+        const {username, url, title, description, author} = req.body
+        console.log(req.body)
 
-}
-catch (err) {
-    console.log(err)
-}
+        const fetchId = await db.query(`
+        SELECT * FROM users where username = $1`, [username]);
 
-}  
-getData()
+        const addArticle = await db.query(`
+        INSERT INTO archives (user_id, url, title, description, author)
+        VALUES ($1, $2, $3, $4, $5)`, [fetchId.id, url, title, description, author] 
+        )
+
+        if (addArticle) { console.log("Archived")}
+    } catch (e) {
+        return next(e)
+    }
+
+
+
 
 })
 
 
+router.get('/preferences', async function (req, res, next) {
+    try {
+        const username = req.query
+        console.log(req.query)
 
+        const id = await db.query( `SELECT id FROM users WHERE username = $1`, [username]);
 
+    }
+    catch (err) {
+        return next(err)
+    }
 
+})
+
+router.get('/archive', async function (req, res, next) {
+    try {
+        const username = req.query
+        console.log(req.body)
+
+        const id = await db.query( `SELECT * FROM users WHERE username = $1`, [username]);
+
+        const results = await db.query(`SELECT url, title, description, author FROM archives WHERE user_id = $1`, [id.id]);
+
+        let articles = results.rows
+        return articles
+    }
+    catch (err){
+        return next(err)
+    }
+})
 
 
 

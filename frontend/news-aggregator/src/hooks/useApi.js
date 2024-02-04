@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, {useState } from 'react'
 import axios from 'axios'
 
-const useApi = (url) => {
+const useApi = ({url}) => {
 
     const [apiData, setApiData] = useState([]
         )
