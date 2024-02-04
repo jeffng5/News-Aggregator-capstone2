@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react'
 import "./Login.css"
 import { Link } from 'react-router-dom'
 
-let username = localStorage.getItem('username')
-let pref = localStorage.getItem('preferences')
-const Preferences = () => {
 
+
+
+const Preferences = () => {
+    let username = localStorage.getItem('username')
+    let pref = localStorage.getItem('preferences')
     const searchTopics=[]
 
-    console.log(pref)
     const initialState = pref
-    const [formData, setFormData] = useState([])
     const [prefs, setPrefs] = useState(initialState)
 
 
@@ -21,14 +21,14 @@ useEffect(()=>{
 )
 
 
-    const handleForm = (e) => {
+const handleForm = (e) => {
 
         let wildCard=[]
         wildCard.push(e.target.value)
         localStorage.setItem('freePreferences', wildCard)
     }
 
-    const handleChange = (e) => {
+function handleChange(e) {
  
     if (username) {
         console.log(e.target.checked)
@@ -42,13 +42,14 @@ useEffect(()=>{
             searchTopics.splice(index, 1);
         }
             console.log(searchTopics)
-
+}
             localStorage.setItem('preferences', searchTopics)
-    
+
             if (searchTopics.length > 5 || searchTopics.length < 1) {
                 throw Error("You must select between 1 - 5 topics.")}
-}
+
     }
+
 console.log(localStorage.getItem('preferences'))
 console.log(localStorage.getItem('freePreferences'))
 
@@ -60,6 +61,17 @@ if (username)
 
     { return (
         <>
+        
+     
+        <div className='links'>
+        <Link to = ""><p>Hi {username},</p></Link>
+        <Link to = "/users"><p>Preferences</p></Link>
+        
+        <Link to = "/users/archives"><p>Archive</p></Link>
+      
+        <Link to = "/logout"><p>Logout</p></Link>
+   
+        </div>
         <h1>News Topic Preferences</h1> 
      
         <h3> Your current Topics Are: <h3 className='color'>{prefs}</h3></h3>
@@ -128,9 +140,9 @@ if (username)
     )}
 
 
+    }
 
 
-}
 
 
 export default Preferences

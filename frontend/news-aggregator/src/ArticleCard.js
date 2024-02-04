@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import "./FrontPage.css"
 import Archive from "./Archive"
 import ColoredLineThin from "./ColoredLineThin"
+import {Helpers} from "./helpers"
+
 let username = localStorage.getItem('username')
 
 const ArticleCard = ({title, description, url, author, urlToImage}) => {
+
+
 if (description)
 
     return (

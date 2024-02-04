@@ -1,10 +1,10 @@
 import axios from 'axios'
-
+// let username= localStorage.getItem('username')
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
 export class Helpers {
-
+  
     static token;
 
     static async request(endpoint, data ={}, method = 'get') {
@@ -49,16 +49,24 @@ export class Helpers {
 // call to archive articles
     static async saveArticle(username, url, title, description, author) {
         let res = await this.request(`users/preferences`, {username, url, title, description, author}, 'post')
-        console.log(res)
+        console.log(res, "SAVE ARTICLE")
         return res;
     }
 
+
 //call to get archived articles
+
     static async getArticles(username) {
-        let res = await this.request('users/archive', {username})
+        let res = await this.request('users/archives', {username})
         console.log(res)
+        localStorage.setItem('res', res)
         return res;
     }    
  
-
+// call to patch preferences  
+    // static async updatePrefs(username, searchTopics) {
+    //     let res = await this.request('users/preferences', {username, searchTopics}, 'put')
+    //     console.log(res)
+    //     return res;
+    // }
 }

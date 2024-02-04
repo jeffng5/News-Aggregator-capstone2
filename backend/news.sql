@@ -7,7 +7,9 @@ CREATE DATABASE news;
 
 DROP TABLE archives;
 DROP TABLE users;
+DROP TABLE preferences;
 
+ALTER TABLE users ADD CONSTRAINT constraintname UNIQUE (username);
 
 \i /Users/jeffreyng/news-aggregator-capstone2/backend/news-schema.sql;
 -- \i news-seed.sql

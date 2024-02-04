@@ -7,13 +7,12 @@ import myImage from './penfeather.png'
 
 
 const Archive = ({username, url, title, description, author}) =>{
-
+   
     const [state, setState] = useState(null)
 
     const handleArchive = async() => {
-        
-        try {
 
+        try {
             const res = await Helpers.saveArticle(username, url, title, description, author)
             setState(res)
         }

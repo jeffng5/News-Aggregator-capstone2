@@ -42,3 +42,7 @@ p.news-title {
   text-align: center;
   margin-left: 0px;
 }
+
+p.username {
+  color: green;
+}

@@ -6,6 +6,7 @@ import ColoredLine from "./ColoredLine"
 import useApi from "./hooks/useApi"
 import { Link } from 'react-router-dom'
 
+let username = localStorage.getItem('username')
 let apiKey ='9e27e511f89b442e8a6dafcc72fb6e3c'
 let pref = localStorage.getItem('preferences')
 let subj = pref.split(",")
@@ -122,6 +123,15 @@ catch (err) {console.log(err)}
 
 return (
     <>
+     <div className='links'>
+        <Link to = ""><p>Hi {username},</p></Link>
+        <Link to = "/users"><p>Preferences</p></Link>
+        
+        <Link to = "/users/archives"><p>Archive</p></Link>
+      
+        <Link to = "/logout"><p>Logout</p></Link>
+   
+        </div>
 <h1>Your Front Page News </h1>
 <h2>{date}</h2>
 
