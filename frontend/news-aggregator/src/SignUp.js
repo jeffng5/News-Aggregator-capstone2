@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import './Login.css'
+import './App.css'
 import {Helpers} from "./helpers"
 import { useNavigate } from 'react-router-dom'
 
@@ -42,7 +42,7 @@ const SignUp = () => {
 
     
             <div className= 'log-in-form'>
-            <button className='log' onClick={SignUpUser}>SignUp</button>
+            <button id='log' onClick={SignUpUser}>SignUp</button>
             </div>
         </form>
         </>

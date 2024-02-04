@@ -6,7 +6,7 @@ let username = localStorage.getItem('username')
 let pref = localStorage.getItem('preferences')
 const Preferences = () => {
 
-const searchTopics=[]
+    const searchTopics=[]
 
     console.log(pref)
     const initialState = pref
@@ -22,15 +22,14 @@ useEffect(()=>{
 
 
     const handleForm = (e) => {
-        // setFormData(e.target.value)
-        // console.log(formData)
+
         let wildCard=[]
         wildCard.push(e.target.value)
         localStorage.setItem('freePreferences', wildCard)
     }
 
     const handleChange = (e) => {
-    
+ 
     if (username) {
         console.log(e.target.checked)
         console.log(e.target.value)
@@ -45,44 +44,32 @@ useEffect(()=>{
             console.log(searchTopics)
 
             localStorage.setItem('preferences', searchTopics)
-    }
-    if (searchTopics.length ===0) {
-        throw Error('Please select at least one topic')
-    }
-    if (searchTopics.length === 5) {
-        throw Error('You have reached the max topics')
-    }
+    
+            if (searchTopics.length > 5 || searchTopics.length < 1) {
+                throw Error("You must select between 1 - 5 topics.")}
+}
     }
 console.log(localStorage.getItem('preferences'))
 console.log(localStorage.getItem('freePreferences'))
 
-if (username)
-console.log(username)
-    return (
+
+
+
+
+if (username) 
+
+    { return (
         <>
         <h1>News Topic Preferences</h1> 
      
         <h3> Your current Topics Are: <h3 className='color'>{prefs}</h3></h3>
         
-        <h3> Please Choose (Up to 5): </h3>
-        {/* <div>
-        <CheckBox item={"Africa"} /></div>
-        <div>
-        <CheckBox item={"Asia"} /></div>
+        <h3> Please Choose One (Up to 5): </h3>
 
-        <div><CheckBox item={"Business"} /></div>
-        <div><CheckBox item={"Entertainment"} /></div>
-        <div><CheckBox item={"Europe"} /></div>
-        <div><CheckBox item={"General"} /></div>
-        <div><CheckBox item={"Health"} /></div>
-        <div><CheckBox item={"Science"} /></div>
-        <div><CheckBox item={"Sports"} /></div>
-        <div><CheckBox item={"Technology"} /></div>
-        <div><CheckBox item={"U.S."} /></div> */}
 <form>
         <div>
-        <input type = 'checkbox' id ='Africa' name='Africa' value= 'Africa' onChange={handleChange}></input>   
-        <label for= "Africa">Africa</label>
+        <input type = 'checkbox' id ='Australia' name='Australia' value= 'Australia' onChange={handleChange}></input>   
+        <label for= "Australia">Australia</label>
         </div>
         <div>
         <input type = 'checkbox'   id ='Asia' name='Asia' value= 'Asia' onChange={handleChange} ></input>   
@@ -97,12 +84,12 @@ console.log(username)
         <label for= "entertainment">Entertainment</label>
         </div>
         <div>
-        <input type = 'checkbox' id ='Europe' name='Europe' value= 'Europe' onChange={handleChange} ></input>   
-        <label for= "Europe">Europe</label>
-        </div>
-        <div>
         <input type = 'checkbox'   id ='general' name='general' value= 'General' onChange={handleChange}></input>   
         <label for= "general">General</label>
+        </div>
+        <div>
+        <input type = 'checkbox' id ='U.K.' name='U.K.' value= 'U.K.' onChange={handleChange} ></input>   
+        <label for= "Europe">U.K.</label>
         </div>
         <div>
         <input type = 'checkbox'  id ='health' name='health' value= 'Health' onChange={handleChange} ></input>   
@@ -135,9 +122,14 @@ console.log(username)
        <Link to = 'preferences'><button className='save'>See Front Page News</button></Link>
        
         </div>
+    
         </form>
 </>
-    )
+    )}
+
+
+
+
 }
 
 

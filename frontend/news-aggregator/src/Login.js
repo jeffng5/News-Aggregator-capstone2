@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import './Login.css'
+import './App.css'
 import {Helpers} from "./helpers"
 import { useNavigate } from 'react-router-dom'
 
@@ -35,7 +35,7 @@ const Login = () => {
             <input id= "password" type= "text" name= 'password' onChange={handleChange} placeholder= "password" value={formData.password}></input>
             </div>
             <div className= 'log-in-form'>
-            <button className='log' onClick={LoginUser}>Log In</button>
+            <button id='log' onClick={LoginUser}>Log In</button>
             </div>
         </form>
         </>

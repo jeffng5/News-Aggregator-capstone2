@@ -4,51 +4,120 @@ import axios from 'axios'
 import ArticleCard from "./ArticleCard"
 import ColoredLine from "./ColoredLine"
 import useApi from "./hooks/useApi"
+import { Link } from 'react-router-dom'
 
-
+let apiKey ='9e27e511f89b442e8a6dafcc72fb6e3c'
 let pref = localStorage.getItem('preferences')
 let subj = pref.split(",")
-let key = subj[0]
-console.log(subj)
+let term = localStorage.getItem('freePreferences')
+console.log(term)
+console.log(subj[0])
 
 const FrontPage = () => {
 
     const [dateTime, setDateTime] = useState(new Date())
-    const [data, setData] = useState([])
-    const [topic, setTopic] =useState([])
-    const [topic1, setTopic1] = useState([])
-    const [topic2, setTopic2] = useState([])
-    const [topic3, setTopic3] = useState([])
+    const [term, setTerm] = useState([])
+    const [australia, setAustralia] =useState([])
+    const [asia, setAsia] = useState([])
+    const [uk, setUk] = useState([])
+    const [us, setUS] = useState([])
+    const [business, setBusiness] = useState([])
+    const [entertainment, setEntertainment] = useState([])
+    const [general, setGeneral] = useState([])
+    const [health, setHealth] = useState([])
+    const [science, setScience] = useState([])
+    const [sports, setSports] = useState([])
+    const [technology, setTechnology] = useState([])
     const date = dateTime.toLocaleDateString();
 
 useEffect (()=> {
     setDateTime(new Date())
     getApi()
+    
 }, [])
 
-const getApi = async(url) => {
+const getApi = async() => {
    
-try { 
-    const res = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=${subj[0]}&pageSize=10&apiKey=e6522b5c205148009c589b3bc68a637d`)
-    console.log(res)
-    setData(res['data']['articles'])
 
-    let r = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=${subj[1]}&pageSize=10&apiKey=e6522b5c205148009c589b3bc68a637d`)
-    setTopic(r['data']['articles'])
 
-    let r1 = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=${subj[2]}&pageSize=10&apiKey=e6522b5c205148009c589b3bc68a637d`)
-    setTopic1(r1['data']['articles'])
+    try { 
+    if (subj[0]==='Australia' || subj[1]=== 'Australia' || subj[2]==='Australia' || subj[3]==='Australia'
+    || subj[4]=== 'Australia') {
+        const res = await axios.get(`https://newsapi.org/v2/top-headlines?country=au&pageSize=10&apiKey=9e27e511f89b442e8a6dafcc72fb6e3c`)
+        setAustralia(res['data']['articles'])
+    }
+    if (subj[0]==='Asia' || subj[1]=== 'Asia' || subj[2]==='Asia' || subj[3]==='Asia'
+    || subj[4]=== 'Asia') {
+        const res1 = await axios.get(`https://newsapi.org/v2/top-headlines?country=jp&apiKey=9e27e511f89b442e8a6dafcc72fb6e3c`)
+        setAsia(res1['data']['articles'])
+    }
+    if (subj[0]==='U.K.' || subj[1]=== 'U.K.' || subj[2]==='U.K.' || subj[3]==='U.K.'
+    || subj[4]==='U.K.') {
+        const res2 = await axios.get(`https://newsapi.org/v2/top-headlines?country=gb&apiKey=9e27e511f89b442e8a6dafcc72fb6e3c`)
+        setUk(res2['data']['articles'])
+    }
 
-    let r2 = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=${subj[3]}&pageSize=10&apiKey=e6522b5c205148009c589b3bc68a637d`)
-    setTopic2(r2['data']['articles'])
+    if (subj[0]==='US' || subj[1]=== 'US' || subj[2]==='US' || subj[3]==='US'
+    || subj[4]=== 'US') {
+        const res3 = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`)
+        setUS(res3['data']['articles'])
+    
+    }
+    if (subj[0]==='Business' || subj[1]==='Business' || subj[2] === 'Business' || subj[3]=== 'Business' || subj[4]==='Business') {
+        const res4 = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=business&pageSize=15&apiKey=${apiKey}`)
+    console.log(res4)
+    setBusiness(res4['data']['articles'])
+}  
+    if (subj[0]==='Entertainment' || subj[1]==='Entertainment' || subj[2] === 'Entertainment' || subj[3]=== 'Entertainment' || subj[4]==='Entertainment'){
+        const res5 = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=entertainment&pageSize=15&apiKey=${apiKey}`)
+  
+    setEntertainment(res5['data']['articles'])
+}  
+    if (subj[0]==='General' || subj[1]==='General' || subj[2] === 'General' || subj[3]=== 'General' || subj[4]==='General'){
+    const res6 = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=general&pageSize=15&apiKey=${apiKey}`)
 
-    let r3 = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=${subj[4]}&pageSize=10&apiKey=e6522b5c205148009c589b3bc68a637d`)
-    setTopic3(r3['data']['articles'])
-}
- catch (err) {
-     console.log(err)
- }
-}
+setGeneral(res6['data']['articles'])
+}  
+    if (subj[0]==='Health' || subj[1]==='Health' || subj[2] === 'Health' || subj[3]=== 'Health' || subj[4]==='Health'){
+    const res7 = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=health&pageSize=15&apiKey=${apiKey}`)
+
+setHealth(res7['data']['articles'])
+}  
+
+if (subj[0]==='Science' || subj[1]==='Science' || subj[2] === 'Science' || subj[3]=== 'Science' || subj[4]==='Science'){
+    const res8 = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=science&pageSize=15&apiKey=${apiKey}`)
+
+setScience(res8['data']['articles'])
+}  
+
+if (subj[0]==='Sports' || subj[1]==='Sports' || subj[2] === 'Sports' || subj[3]=== 'Sports' || subj[4]==='Sports'){
+    const res9 = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=sports&pageSize=15&apiKey=${apiKey}`)
+
+setSports(res9['data']['articles'])
+}  
+
+if (subj[0]==='Technology' || subj[1]==='Technology' || subj[2] === 'Technology' || subj[3]=== 'Technology' || subj[4]==='Technology'){
+    const res10 = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=technology&pageSize=15&apiKey=${apiKey}`)
+
+setTechnology(res10['data']['articles'])
+
+
+if (term){
+const res11 = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&q=${term}pageSize=15&apiKey=${apiKey}`)
+
+setTerm(res11['data']['articles'])
+} }
+    }
+
+
+
+catch (err) {console.log(err)}
+    console.log(australia)
+    console.log(subj)
+}    
+
+
+
 
 
 return (
@@ -57,7 +126,16 @@ return (
 <h2>{date}</h2>
 
 <ColoredLine color = "black" />
-{data.map(c => (
+
+{us.map(c => (
+    <ArticleCard  title = {c.title} 
+    url = {c.url}
+    description ={c.description}
+   urlToImage= {c.urlToImage}
+
+    author = {c.author} />))} 
+
+{australia.map(c => (
     <ArticleCard  title = {c.title} 
     url = {c.url}
     description ={c.description}
@@ -65,7 +143,8 @@ return (
 
     author = {c.author} />))}
 
-{topic.map(c => (
+
+{asia.map(c => (
     <ArticleCard  title = {c.title} 
     url = {c.url}
     description ={c.description}
@@ -73,7 +152,7 @@ return (
 
     author = {c.author} />))}
 
-{topic1.map(c => (
+{business.map(c => (
     <ArticleCard  title = {c.title} 
     url = {c.url}
     description ={c.description}
@@ -81,7 +160,7 @@ return (
 
     author = {c.author} />))} 
 
-{topic2.map(c => (
+{entertainment.map(c => (
     <ArticleCard  title = {c.title} 
     url = {c.url}
     description ={c.description}
@@ -89,16 +168,68 @@ return (
 
     author = {c.author} />))} 
 
-{topic3.map(c => (
+{general.map(c => (
     <ArticleCard  title = {c.title} 
     url = {c.url}
     description ={c.description}
    urlToImage= {c.urlToImage}
 
     author = {c.author} />))} 
-</>
-)
-        }
+
+{uk.map(c => (
+    <ArticleCard  title = {c.title} 
+    url = {c.url}
+    description ={c.description}
+   urlToImage= {c.urlToImage}
+
+    author = {c.author} />))} 
+
+{health.map(c => (
+    <ArticleCard  title = {c.title} 
+    url = {c.url}
+    description ={c.description}
+   urlToImage= {c.urlToImage}
+
+    author = {c.author} />))} 
+
+{science.map(c => (
+    <ArticleCard  title = {c.title} 
+    url = {c.url}
+    description ={c.description}
+   urlToImage= {c.urlToImage}
+
+    author = {c.author} />))} 
+
+{sports.map(c => (
+    <ArticleCard  title = {c.title} 
+    url = {c.url}
+    description ={c.description}
+   urlToImage= {c.urlToImage}
+
+    author = {c.author} />))} 
+
+{technology.map(c => (
+    <ArticleCard  title = {c.title} 
+    url = {c.url}
+    description ={c.description}
+   urlToImage= {c.urlToImage}
+
+    author = {c.author} />))} 
+
+{term.map(c => (
+    <ArticleCard  title = {c.title} 
+    url = {c.url}
+    description ={c.description}
+   urlToImage= {c.urlToImage}
+
+    author = {c.author} />))} 
+
+<h2><Link to = '/users'>Go back to Preferences Page</Link></h2>
+</>)
+}
+
+    
+
     
 
 export default FrontPage

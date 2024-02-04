@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Welcome from "./Welcome"
 import Preferences from "./Preferences"
 import FrontPage from "./FrontPage"
+import Saved from "./Saved"
+import Logout from "./Logout"
 
 
 let username = localStorage.getItem('username')
@@ -20,6 +22,8 @@ function App() {
         <Route exact path = "/" element={<Welcome />}></Route>
         <Route exact path = "/users" element={<Preferences />}></Route>
         <Route exact path = "/users/preferences" element={<FrontPage />}></Route>
+        <Route exact path = "/users/archive" element= {<Saved />}></Route>
+        <Route exact path = "/logout" element= {<Logout />}></Route>
 
 
 

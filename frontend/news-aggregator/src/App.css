@@ -35,3 +35,10 @@ p.news-title {
   margin-top : 5px;
   margin-bottom: 5px;
 }
+
+#log{
+  height: 33px;
+  position: relative;
+  text-align: center;
+  margin-left: 0px;
+}
