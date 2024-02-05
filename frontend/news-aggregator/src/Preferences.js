@@ -67,7 +67,7 @@ if (username)
         <Link to = ""><p>Hi {username},</p></Link>
         <Link to = "/users"><p>Preferences</p></Link>
         
-        <Link to = "/users/archives"><p>Archive</p></Link>
+        <Link to = "/users/archives"><p>Archives</p></Link>
       
         <Link to = "/logout"><p>Logout</p></Link>
    

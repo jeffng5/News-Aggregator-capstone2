@@ -3,7 +3,6 @@ import "./FrontPage.css"
 import axios from 'axios'
 import ArticleCard from "./ArticleCard"
 import ColoredLine from "./ColoredLine"
-import useApi from "./hooks/useApi"
 import { Link } from 'react-router-dom'
 
 let username = localStorage.getItem('username')
@@ -127,7 +126,7 @@ return (
         <Link to = ""><p>Hi {username},</p></Link>
         <Link to = "/users"><p>Preferences</p></Link>
         
-        <Link to = "/users/archives"><p>Archive</p></Link>
+        <Link to = "/users/archives"><p>Archives</p></Link>
       
         <Link to = "/logout"><p>Logout</p></Link>
    

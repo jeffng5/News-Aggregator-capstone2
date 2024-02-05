@@ -22,32 +22,18 @@ router.post("/preferences", async function (req, res, next) {
    
         const addArticle = await db.query(`
         INSERT INTO archives (username, url, title, description, author)
-        VALUES ($1, $2, $3, $4, $5)`, [username, url, title, description, author] 
+        VALUES ($1, $2, $3, $4, $5) RETURNING *`, [username, url, title, description, author] 
         )
 
         if (addArticle) { console.log("Archived")}
+        console.log(addArticle)
+        return addArticle
     } catch (e) {
         return next(e)
     }
-
+  
 })
 
-
-router.put('/preferences', async function (req, res, next) {
-    try {
-        const {username, searchTopics} = req.body
-        console.log(req.body)
-
-        const result = await db.query(
-            `MERGE INTO preferences as p USING users ON p.username=users.username WHEN MATCHED THEN UPDATE SET p.preferences = $1 WHEN NOT MATCHED THEN INSERT (p.username, p.preferences) VALUES ($2, $1)
-        `, [searchTopics, username]);
-        if (result) {console.log(result, 'updated!')}
-    }
-    catch (err) {
-        return next(err)
-    }
-
-})
 
 router.get('/archives', async function (req, res, next) {
     try {
