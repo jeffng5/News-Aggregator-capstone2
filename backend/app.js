@@ -29,6 +29,7 @@ app.use("/users", usersRoutes);
 const pgp = require('pg-promise')(/* options */)
 const db = pgp("postgresql://jeffreyng:beachbodyp90x@127.0.0.1:5433/news")
 
+/////////////////////////// BASIC ROUTES for register and login ///////////////////////////////
 app.post('/register', async (req,res, next)=> {
     try {
         const { username, password, email } = req.body;

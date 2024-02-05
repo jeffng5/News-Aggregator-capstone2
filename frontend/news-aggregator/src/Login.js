@@ -6,20 +6,19 @@ import { useNavigate } from 'react-router-dom'
 
 
 const Login = () => {
-
+    //redirect to /users onCLick
     const navigate = useNavigate()
     const [formData, setFormData] = useState([])
 
+    //handles input
     const handleChange = (e) => {
         const { name, value } = e.target
         setFormData(formData => ({...formData,[name]: value }))
     }
-    console.log(formData.username)
+    // takes in username, password and makes backend call to route for validation
     async function LoginUser(e) {
         e.preventDefault();
         const res = await Helpers.loginUser(formData.username, formData.password);
-        console.log(res)
-
         navigate('/users')
     }
     

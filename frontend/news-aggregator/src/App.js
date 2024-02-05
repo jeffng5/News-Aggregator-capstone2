@@ -7,9 +7,6 @@ import FrontPage from "./FrontPage"
 import Saved from "./Saved"
 import Logout from "./Logout"
 
-
-let username = localStorage.getItem('username')
-console.log(username)
 function App() {
 
   return (

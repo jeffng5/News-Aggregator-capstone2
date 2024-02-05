@@ -1,12 +1,12 @@
 import axios from 'axios'
-// let username= localStorage.getItem('username')
+
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
 export class Helpers {
-  
+    //empty token for header
     static token;
-
+    // skeleton of request helper function
     static async request(endpoint, data ={}, method = 'get') {
         console.debug("API call:", endpoint, data, method);
         const url = `${BASE_URL}/${endpoint}`;

@@ -3,6 +3,9 @@ const router = express.Router();
 const axios = require('axios');
 const db = require("../db");
 
+
+
+// route to get ID from username
 router.get('/', async function (req, res, next) {
     try {
         const username= req.query
@@ -14,6 +17,7 @@ router.get('/', async function (req, res, next) {
     return id.rows[0]
 })
 
+// route to post archive article into database, accessed by helper function in frontend
 router.post("/preferences", async function (req, res, next) {
     
     try {
@@ -34,7 +38,7 @@ router.post("/preferences", async function (req, res, next) {
   
 })
 
-
+// route to query archived articles, returns archives for that user 
 router.get('/archives', async function (req, res, next) {
     try {
         const {username} = req.query

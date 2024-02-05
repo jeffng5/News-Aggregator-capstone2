@@ -4,10 +4,12 @@ import Archive from "./Archive"
 import ColoredLineThin from "./ColoredLineThin"
 import {Helpers} from "./helpers"
 
+
 let username = localStorage.getItem('username')
+// Card template to hold the articles returned
 
+//receiving prop data from parent
 const ArticleCard = ({title, description, url, author, urlToImage}) => {
-
 
 if (description)
 

@@ -6,15 +6,17 @@ import ColoredLine from "./ColoredLine"
 import { Link } from 'react-router-dom'
 
 let username = localStorage.getItem('username')
-let apiKey ='9e27e511f89b442e8a6dafcc72fb6e3c'
+let apiKey ='e6522b5c205148009c589b3bc68a637d'
 let pref = localStorage.getItem('preferences')
 let subj = pref.split(",")
 let term = localStorage.getItem('freePreferences')
 console.log(term)
 console.log(subj[0])
 
-const FrontPage = () => {
 
+// holds bulk of search, many API calls, displays current date
+const FrontPage = () => {
+// states for all the topics
     const [dateTime, setDateTime] = useState(new Date())
     const [term, setTerm] = useState([])
     const [australia, setAustralia] =useState([])

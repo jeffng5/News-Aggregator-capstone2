@@ -20,7 +20,7 @@ useEffect(()=>{
 }, []
 )
 
-
+// function to intake search term and save to localStorage
 const handleForm = (e) => {
 
         let wildCard=[]
@@ -28,23 +28,29 @@ const handleForm = (e) => {
         localStorage.setItem('freePreferences', wildCard)
     }
 
+// capture the checkbox input
 function handleChange(e) {
- 
+ // protected with username/sign in
     if (username) {
         console.log(e.target.checked)
         console.log(e.target.value)
+    //checks if checkbox is checked
         if (e.target.checked === true) {
+        //pushes value of checkbox into empty array
             searchTopics.push(e.target.value)
         }
+        //handles if the box is unchecked
         if (e.target.checked === false) {
+            // trying to get index of unchecked if in array 
             const index = searchTopics.indexOf(e.target.value);
-
+            //splicing off element by index (the false checked item)
             searchTopics.splice(index, 1);
         }
             console.log(searchTopics)
-}
+}           // setting searchTopics to localStorage
             localStorage.setItem('preferences', searchTopics)
 
+            //error handle if searchTopics is >5 or <1
             if (searchTopics.length > 5 || searchTopics.length < 1) {
                 throw Error("You must select between 1 - 5 topics.")}
 
@@ -56,9 +62,9 @@ console.log(localStorage.getItem('freePreferences'))
 
 
 
-
+// protecting route
 if (username) 
-
+//////////////////////////////// CHECKBOX FORM ////////////////////////////////
     { return (
         <>
         

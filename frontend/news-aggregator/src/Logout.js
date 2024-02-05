@@ -2,13 +2,15 @@ import React from 'react'
 import "./App.css"
 import { Link } from 'react-router-dom'
 
-const Logout = () => {
-    const username = localStorage.getItem('username')
 
+const Logout = () => {
+
+    const username = localStorage.getItem('username')
     async function logOutUser() {
+        //removing username bc its used for access to many routes
         const result = localStorage.removeItem('username')
     } 
-
+        //set Timeout to allow username to be displayed before popping localStorage 
     setTimeout(logOutUser, 2000)
 
     return (

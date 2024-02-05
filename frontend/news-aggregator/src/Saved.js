@@ -5,20 +5,24 @@ import ArticleCard from "./ArticleCard"
 let username = localStorage.getItem('username')
 let blah = localStorage.getItem('res')
 console.log(blah, "here")
+
+//display archives 
 const Saved = () => {
     let initialState= []
     const [display, setDisplay] = useState(initialState)
 
-useEffect(() =>{
-    archiveResults()
+// useEffect to  
+    useEffect(() =>{
+        archiveResults()
+    }, [])
 
-}, [])
-const archiveResults = async() => {
+    const archiveResults = async() => {
     try{
     console.log(username)
-    console.log(username)
+//helper function to query archives
     const res = await Helpers.getArticles(username)
     console.log(res)
+// res not returning anything
     setDisplay(res)
     }
     catch (e) {

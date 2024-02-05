@@ -4,16 +4,17 @@ body {
     font-family: Courier;
 }
 
-button {
+button.save {
     border-radius: 5px;
     background-color: teal;
     color: white;
     padding: 5px;
     font-weight: 550;
-    height: 40px;
-    width: 100px; 
+    height: 29px;
+    width: 150px; 
     position: relative;
-    margin-left: 100%;
+    
+
 }
 
 button.log{
@@ -24,14 +25,17 @@ button.log{
     width: 90px;
 }
 
-button.save{
-    width: 100%;
-    position: relative;
-    right: 1019px;
-    text-align: center;
+button {
+    border-radius: 5px;
+    background-color: teal;
+    color: white;
+    padding: 5px;
+    font-weight: 550;
     height: 29px;
-    width: 150px;
+    width: 150px; 
+    position: relative;
     
+
 }
 
 button#preferences{
