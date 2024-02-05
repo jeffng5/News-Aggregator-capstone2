@@ -60,7 +60,7 @@ export class Helpers {
         let res = await this.request('users/archives', {username})
         console.log(res)
         localStorage.setItem('res', res)
-        return res;
+        return res.json();
     }    
  
 // call to patch preferences  

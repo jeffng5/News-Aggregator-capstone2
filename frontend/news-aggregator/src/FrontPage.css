@@ -23,14 +23,27 @@ img {
     margin-left: 10px;
     width: 25px;
     height: 25px;
-    bottom: 50px;
+    bottom: 45px;
+    margin-top: -4px;
 }
 
 button.archive {
+
     background-color: rgba(249, 249, 44, 0.877);
     color: black;
+    height: 33px;
+    width: 120px;
     bottom: 30%;
+    left: 100%;
+}
 
+button.archived {
+    background-color: gray;
+    color: black;
+    height: 33px;
+    width: 120px;
+    bottom: 30%;
+    left: 100%;
 }
 #date-location { display: inline-block; position: absolute; left: 15px; top: 125px; text-align: left; background-color: #FFFFFF; border: 1px solid #006699; padding: 4px; z-index: 2; }
 

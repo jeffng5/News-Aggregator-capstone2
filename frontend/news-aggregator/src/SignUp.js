@@ -4,23 +4,23 @@ import {Helpers} from "./helpers"
 import { useNavigate } from 'react-router-dom'
 
 
-
-
 const SignUp = () => {
     const navigate = useNavigate()
     const [formData, setFormData] = useState("")
 
+// handle change to intake formData
     const handleChange = (e) => {
         const { name, value } = e.target
         setFormData(formData => ({...formData,[name]: value }))
     }
     console.log(formData.username)
     console.log(formData.email)
+
+//makes API call to backend to post register data and redirect to users page.
     async function SignUpUser(e) {
         e.preventDefault();
         const res = await Helpers.signUpUser(formData.username, formData.password, formData.email)
         console.log(res)
-
         navigate('/users')
     
     }
