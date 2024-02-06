@@ -1,24 +1,13 @@
-const request = require('supertest');
-const bcrypt = require("bcrypt")
-const { BCRYPT_WORK_FACTOR } = require("../config")
+const request = require("supertest");
+const db = require("../db");
+const app = require("../app");
 
-const db = require("../db.js");
-const app = require("../app.js")
+const {BeforeAll, AfterAll, BeforeEach, AfterEach} = require("./commonSetup"); 
 
-async function BeforeAll() {
-    await db.query(`INSERT INTO users(username, password, email) VALUES ('TedWilliams', $1, 'ted.williams@baseball.com') RETURNING username`, 
-    [await bcrypt.hash('password1', BCRYPT_WORK_FACTOR) ])
-
-    await db.query(`INSERT INTO archives (username, url, title, description, author) VALUES (
-        'TedWilliams',
-        "Jimmy.com",
-        'baseballLegend',
-        'cooperstown',
-        'Babe Ruth') RETURNING username
-    `)
-}
-
-BeforeAll()
+// beforeAll(BeforeAll);
+beforeEach(BeforeEach);
+afterEach(AfterEach)
+afterAll(AfterAll);
 
 //////////////////////// Start TESTING /////////////////////
 
@@ -31,17 +20,15 @@ test("GET / works", async function () {
             }]
         })
     })
-
-
-describe("POST /preferences works", async function () {
+  
+test(" POST article on archive works", async function () {
     const newArchive = {
         username: 'TedWilliams',
-        url: "Jimmy.com",
+        url: 'www.Jimmy.com',
         title: 'baseballLegend',
         description :'cooperstown',
         author: 'Babe Ruth'
     };
-    test("/preferences works", async function () {
         const resp = await request(app)
             .post("/preferences")
             .send(newArchive);
@@ -51,7 +38,7 @@ describe("POST /preferences works", async function () {
         });
     });
 
-})
+
 
 
 // Testing GET archives
@@ -60,7 +47,7 @@ test("GET /archives", async function () {
     expect(resp.body).toEqual({
         archives : [{
             username: 'TedWilliams',
-            url: "Jimmy.com",
+            url: "www.Jimmy.com",
             title: 'baseballLegend',
             description: 'cooperstown',
             author: 'Babe Ruth'

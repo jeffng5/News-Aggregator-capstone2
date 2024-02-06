@@ -22,13 +22,13 @@ const Archive = ({username, url, title, description, author}) =>{
 console.log(state)
 if (state) {
     return (
-        <button className='archived'><img className= 'archive' src = {myImage} alt=''></img>Archived</button>
+        <button className='archived'><img id= 'archive' src = {myImage} alt=''></img>Archived</button>
     )
 }
 if (!state){
 return (
     <>
-    <button className='archive' onClick={handleArchive}><img className= 'archive' src = {myImage} alt=''></img>Archive</button>
+    <button className='archive' onClick={handleArchive}><img id= 'archive' src = {myImage} alt=''></img>Archive</button>
  
     </>
 )

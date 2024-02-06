@@ -1,23 +1,30 @@
 {
   "name": "news-aggregator",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "axios": "^1.6.7",
+    "babel": "^6.23.0",
+    "i": "^0.3.7",
+    "npm": "^10.4.0",
+    "react": "^16.14.0",
     "react-router-dom": "^6.21.3",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
+    "supertest": "^6.3.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "react-app-rewired build",
+    "test": "mocha --require @babel/register --require ./test/helpers.js",
+    "eject": "react-scripts eject",
+    "docs": "jsdoc -c jsdoc.conf.json",
+    "start": "webpack serve --config ./webpack.config.js",
+    "test:unit": "mocha --require @babel/register --require ./test/helpers.js --require ./test/dom.js",
+    "test:unit:watch": "npm run test:unit -- --watch  --require babel-preset-es2015"
   },
+ 
+  
   "proxy": "http://127.0.0.1:3001",
   "eslintConfig": {
     "extends": [
@@ -36,5 +43,21 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "@babel/register": "^7.23.7",
+    "babel-jest": "^29.7.0",
+    "cypress": "^13.6.4",
+    "mocha": "^10.2.0",
+    "react-app-rewired": "^2.2.1"
+  },
+  "presets": "@babel/preset-env",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "config-overrides.js",
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

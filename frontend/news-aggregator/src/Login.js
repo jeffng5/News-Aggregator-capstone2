@@ -1,13 +1,13 @@
 import React, {useState} from 'react'
 import './App.css'
 import {Helpers} from "./helpers"
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 
 
 const Login = () => {
     //redirect to /users onCLick
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const [formData, setFormData] = useState([])
 
     //handles input
@@ -19,7 +19,7 @@ const Login = () => {
     async function LoginUser(e) {
         e.preventDefault();
         const res = await Helpers.loginUser(formData.username, formData.password);
-        navigate('/users')
+        // navigate('/users')
     }
     
     return (
@@ -34,7 +34,7 @@ const Login = () => {
             <input id= "password" type= "text" name= 'password' onChange={handleChange} placeholder= "password" value={formData.password}></input>
             </div>
             <div className= 'log-in-form'>
-            <button id='log' onClick={LoginUser}>Log In</button>
+            <Link to = '/users'><button id='log' onClick={LoginUser}>Log In</button></Link> 
             </div>
         </form>
         </>

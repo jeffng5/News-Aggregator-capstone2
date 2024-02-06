@@ -63,9 +63,9 @@ console.log(localStorage.getItem('freePreferences'))
 
 
 // protecting route
-if (username) 
+
 //////////////////////////////// CHECKBOX FORM ////////////////////////////////
-    { return (
+    return (
         <>
         
      
@@ -146,7 +146,7 @@ if (username)
     )}
 
 
-    }
+    
 
 
 
